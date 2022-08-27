@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using Forms = System.Windows.Forms;
+﻿using Forms = System.Windows.Forms;
 namespace SoundSwitcher
 {
     internal class TrayIcon
@@ -16,10 +15,7 @@ namespace SoundSwitcher
             NotifyIcon.Visible = true;
         }
 
-        private void NotifyIcon_Click(object? sender, System.EventArgs e)
-        {
-            CustomContextMenu.Show();
-        }
+        private void NotifyIcon_Click(object? sender, System.EventArgs e) => CustomContextMenu.Show();
 
         public void Dispose() => NotifyIcon.Dispose();
     }
