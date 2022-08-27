@@ -4,21 +4,21 @@ namespace SoundSwitcher
 {
     internal class TrayIcon
     {
-        private readonly Forms.NotifyIcon NotifyIcon;
+        private Forms.NotifyIcon NotifyIcon { get; }
+        private CustomContextMenu CustomContextMenu { get; }
         public TrayIcon()
         {
             NotifyIcon = new();
             NotifyIcon.Icon = new System.Drawing.Icon("Resources/Icons/TrayIcon.ico");
             NotifyIcon.Click += NotifyIcon_Click;
 
+            CustomContextMenu = new CustomContextMenu();
             NotifyIcon.Visible = true;
         }
 
         private void NotifyIcon_Click(object? sender, System.EventArgs e)
         {
-            //MessageBox.Show("Clicked!");
-            var customContextWindow = new CustomContextMenu();
-            customContextWindow.Show();
+            CustomContextMenu.Show();
         }
 
         public void Dispose() => NotifyIcon.Dispose();
