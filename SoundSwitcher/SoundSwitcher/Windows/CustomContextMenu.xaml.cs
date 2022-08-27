@@ -21,7 +21,6 @@ namespace SoundSwitcher
             Closing += StopWindowClose;
             Deactivated += HideWhenLostFocus;
 
-            //Set Commands (readonly so must be in constructor)
             ExitApplicationCommand = new DelegateCommand(ExitApplication);
         }
 

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace SoundSwitcher.UserControls
+namespace SoundSwitcher.Views
 {
     /// <summary>
     /// Interaction logic for SoundControl.xaml
