@@ -1,9 +1,9 @@
-﻿using Forms = System.Windows.Forms;
+﻿using System.Windows.Forms;
 namespace SoundSwitcher
 {
     internal class TrayIcon
     {
-        private Forms.NotifyIcon NotifyIcon { get; }
+        private NotifyIcon NotifyIcon { get; }
         private CustomContextMenu CustomContextMenu { get; }
         public TrayIcon()
         {
