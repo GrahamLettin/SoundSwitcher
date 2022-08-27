@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using Forms = System.Windows.Forms;
 
 namespace SoundSwitcher
 {
@@ -13,5 +8,25 @@ namespace SoundSwitcher
     /// </summary>
     public partial class App : Application
     {
+        private readonly Forms.NotifyIcon NotifyIcon;
+        public App()
+        {
+            NotifyIcon = new();
+        }
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            NotifyIcon.Icon = new System.Drawing.Icon("Resources/Icons/TrayIcon.ico");
+            NotifyIcon.ContextMenuStrip = new Forms.ContextMenuStrip();
+            NotifyIcon.ContextMenuStrip.Items.Add("Test 1");
+            NotifyIcon.ContextMenuStrip.Items.Add("Test 2");
+
+            NotifyIcon.Visible = true;
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            NotifyIcon.Dispose();
+            base.OnExit(e);
+        }
     }
 }
