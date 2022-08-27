@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="100" Width="100">
     <Grid>
-  
+        <Button Command="{Binding ExitApplicationCommand}">Exit</Button>
     </Grid>
 </Window>

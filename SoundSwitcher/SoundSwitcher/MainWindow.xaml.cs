@@ -9,14 +9,25 @@ namespace SoundSwitcher
     {
         private const double RelativeScreenSize = 0.25;
 
+        public DelegateCommand ExitApplicationCommand { get; }
+
         public CustomContextMenu()
         {
             InitializeComponent();
-            var desktopWorkingArea = SystemParameters.WorkArea;
-            Height = (SystemParameters.PrimaryScreenHeight * RelativeScreenSize);
-            Width = (SystemParameters.PrimaryScreenWidth * RelativeScreenSize);
-            Left = desktopWorkingArea.Right - this.Width;
-            Top = desktopWorkingArea.Bottom - this.Height; 
+            SetSize();
+            DataContext = this;
+
+            //Set Commands (readonly so must be in constructor)
+            ExitApplicationCommand = new DelegateCommand(ExitApplication);
         }
+        private void SetSize()
+        {
+            var desktopWorkingArea = SystemParameters.WorkArea;
+            Height = SystemParameters.PrimaryScreenHeight * RelativeScreenSize;
+            Width = SystemParameters.PrimaryScreenWidth * RelativeScreenSize;
+            Left = desktopWorkingArea.Right - this.Width;
+            Top = desktopWorkingArea.Bottom - this.Height;
+        }
+        private void ExitApplication(object? parameter) => Application.Current.Shutdown();
     }
 }
