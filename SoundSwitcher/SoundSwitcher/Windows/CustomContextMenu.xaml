@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:usercontrols="clr-namespace:SoundSwitcher.UserControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="100" Width="100">
+        WindowStyle="None"
+        ShowInTaskbar="False"
+        Height="100" Width="100">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
