@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.ComponentModel;
+using System.Windows;
 
 namespace SoundSwitcher
 {
@@ -10,16 +12,27 @@ namespace SoundSwitcher
         private const double RelativeScreenSize = 0.25;
 
         public DelegateCommand ExitApplicationCommand { get; }
-
         public CustomContextMenu()
         {
             InitializeComponent();
             SetSize();
             DataContext = this;
 
+            Closing += StopWindowClose;
+            Deactivated += HideWhenLostFocus;
+
             //Set Commands (readonly so must be in constructor)
             ExitApplicationCommand = new DelegateCommand(ExitApplication);
         }
+
+        private void HideWhenLostFocus(object? sender, EventArgs e) => Hide();
+
+        private void StopWindowClose(object? sender, CancelEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
+        }
+
         private void SetSize()
         {
             var desktopWorkingArea = SystemParameters.WorkArea;

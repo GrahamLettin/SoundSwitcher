@@ -15,7 +15,11 @@ namespace SoundSwitcher
             NotifyIcon.Visible = true;
         }
 
-        private void NotifyIcon_Click(object? sender, System.EventArgs e) => CustomContextMenu.Show();
+        private void NotifyIcon_Click(object? sender, System.EventArgs e)
+        {
+            CustomContextMenu.Show();
+            CustomContextMenu.Activate();
+        }
 
         public void Dispose() => NotifyIcon.Dispose();
     }
