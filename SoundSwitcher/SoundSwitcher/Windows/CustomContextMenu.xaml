@@ -3,10 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SoundSwitcher"
+        xmlns:usercontrols="clr-namespace:SoundSwitcher.UserControls"
         mc:Ignorable="d"
         Title="MainWindow" Height="100" Width="100">
     <Grid>
-        <Button Command="{Binding ExitApplicationCommand}">Exit</Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <usercontrols:SoundControl Grid.Row="0"/>
+        <Button Grid.Row="1" Command="{Binding ExitApplicationCommand}">Exit</Button>
     </Grid>
 </Window>
