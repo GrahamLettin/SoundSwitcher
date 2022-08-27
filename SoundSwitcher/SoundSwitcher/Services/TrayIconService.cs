@@ -1,11 +1,11 @@
 ﻿using System.Windows.Forms;
-namespace SoundSwitcher
+namespace SoundSwitcher.Services
 {
-    internal class TrayIcon
+    internal class TrayIconService
     {
         private NotifyIcon NotifyIcon { get; }
         private CustomContextMenu CustomContextMenu { get; }
-        public TrayIcon()
+        public TrayIconService()
         {
             NotifyIcon = new();
             NotifyIcon.Icon = new System.Drawing.Icon("Resources/Icons/TrayIcon.ico");
@@ -21,6 +21,6 @@ namespace SoundSwitcher
             CustomContextMenu.Activate();
         }
 
-        public void Dispose() => NotifyIcon.Dispose();
+        public void Stop() => NotifyIcon.Dispose();
     }
 }

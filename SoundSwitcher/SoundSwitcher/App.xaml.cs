@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SoundSwitcher.Services;
+using System.Windows;
 
 namespace SoundSwitcher
 {
@@ -7,11 +8,11 @@ namespace SoundSwitcher
     /// </summary>
     public partial class App : Application
     {
-        private readonly TrayIcon Icon;
-        public App() => Icon = new();
+        private readonly TrayIconService IconService;
+        public App() => IconService = new();
         protected override void OnExit(ExitEventArgs e)
         {
-            Icon.Dispose();
+            IconService.Stop();
             base.OnExit(e);
         }
     }
